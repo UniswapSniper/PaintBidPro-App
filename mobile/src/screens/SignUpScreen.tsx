@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
-import { supabase } from '../lib/supabase';
+import { api } from '../lib/api';
 
 export default function SignUpScreen() {
     const navigation = useNavigation<any>();
@@ -13,17 +13,15 @@ export default function SignUpScreen() {
 
     const handleSignUp = async () => {
         setLoading(true);
-        const { error } = await supabase.auth.signUp({
-            email,
-            password,
-        });
+
+        const { user, error } = await api.signup(email, password);
 
         setLoading(false);
 
         if (error) {
             Alert.alert("Sign Up Error", error.message);
         } else {
-            Alert.alert("Success", "Check your email for the confirmation link!");
+            Alert.alert("Success", "Account created successfully! Please log in.");
             navigation.goBack();
         }
     };
