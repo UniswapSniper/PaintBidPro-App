@@ -1,9 +1,85 @@
 "use client";
 
 import Link from "next/link";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import { ArrowRight, Download, CheckCircle, Sparkles, Zap, Shield, Smartphone, Play, Star, ChevronRight } from "lucide-react";
+import { ArrowRight, Download, CheckCircle, Sparkles, Zap, Shield, Smartphone, Play, Star, ChevronRight, Paintbrush, Twitter, Linkedin, Instagram, Mail, ArrowUpRight } from "lucide-react";
+
+// Inline Header Component
+function Header() {
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50">
+      <div className="mx-4 mt-4">
+        <div className="glass rounded-2xl">
+          <div className="container mx-auto flex items-center justify-between h-16 px-6">
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:shadow-blue-500/40 transition-all">
+                <Paintbrush className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-lg font-bold">
+                Paint<span className="gradient-text">Bid</span>Pro
+              </span>
+            </Link>
+            <nav className="hidden md:flex items-center gap-8">
+              <Link href="#features" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">Features</Link>
+              <Link href="#how-it-works" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">How it Works</Link>
+              <Link href="#pricing" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">Pricing</Link>
+            </nav>
+            <div className="flex items-center gap-3">
+              <Link href="/login" className="hidden md:flex text-sm font-medium text-zinc-400 hover:text-white transition-colors px-4 py-2">Sign In</Link>
+              <Link href="/get-started" className="btn-primary text-sm py-2.5 px-5">Get Started</Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+// Inline Footer Component  
+function Footer() {
+  return (
+    <footer className="border-t border-white/5 relative overflow-hidden">
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-t from-blue-500/5 via-purple-500/5 to-transparent blur-3xl" />
+      <div className="container mx-auto px-6 py-16 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+          <div className="lg:col-span-2">
+            <Link href="/" className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+                <Paintbrush className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-lg font-bold">Paint<span className="gradient-text">Bid</span>Pro</span>
+            </Link>
+            <p className="text-zinc-500 mb-6 max-w-sm leading-relaxed">Revolutionizing the painting industry with AI-powered estimates and LIDAR scanning technology.</p>
+          </div>
+          <div>
+            <h4 className="font-semibold mb-6 text-white">Product</h4>
+            <ul className="space-y-4">
+              <li><Link href="#features" className="text-zinc-500 hover:text-white transition-colors">Features</Link></li>
+              <li><Link href="#" className="text-zinc-500 hover:text-white transition-colors">Mobile App</Link></li>
+              <li><Link href="#pricing" className="text-zinc-500 hover:text-white transition-colors">Pricing</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-semibold mb-6 text-white">Company</h4>
+            <ul className="space-y-4">
+              <li><Link href="#" className="text-zinc-500 hover:text-white transition-colors">About Us</Link></li>
+              <li><Link href="#" className="text-zinc-500 hover:text-white transition-colors">Contact</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-semibold mb-6 text-white">Legal</h4>
+            <ul className="space-y-4">
+              <li><Link href="#" className="text-zinc-500 hover:text-white transition-colors">Privacy Policy</Link></li>
+              <li><Link href="#" className="text-zinc-500 hover:text-white transition-colors">Terms of Service</Link></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-zinc-600">© {new Date().getFullYear()} PaintBidPro. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
 
 export default function Home() {
   return (
