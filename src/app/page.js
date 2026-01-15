@@ -11,11 +11,13 @@ function Header() {
         <div className="glass rounded-2xl">
           <div className="container mx-auto flex items-center justify-between h-16 px-6">
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:shadow-blue-500/40 transition-all">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-zinc-400 to-zinc-600 flex items-center justify-center shadow-lg shadow-black/20 group-hover:shadow-black/40 transition-all">
                 <Paintbrush className="w-5 h-5 text-white" />
               </div>
-              <span className="text-lg font-bold">
-                Paint<span className="gradient-text">Bid</span>Pro
+              <span className="text-xl font-bold tracking-tight text-zinc-300">
+                P<span className="text-[#D4AF37] drop-shadow-[0_0_10px_rgba(212,175,55,0.6)]">ai</span>nt
+                <span className="text-zinc-400">BidPro</span>
+                <span className="text-zinc-500 text-sm">.com</span>
               </span>
             </Link>
             <nav className="hidden md:flex items-center gap-8">
