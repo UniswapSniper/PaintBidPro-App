@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import { ArrowRight, Download, CheckCircle, Sparkles, Zap, Shield, Smartphone, Play, Star, ChevronRight } from "lucide-react";
 
 export default function Home() {
