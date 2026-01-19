@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { Paintbrush, Menu, X } from 'lucide-react';
+import Image from 'next/image';
+import { Menu, X } from 'lucide-react';
 
 export default function Header() {
     return (
@@ -8,13 +9,15 @@ export default function Header() {
                 <div className="glass rounded-2xl">
                     <div className="container mx-auto flex items-center justify-between h-16 px-6">
                         {/* Logo */}
-                        <Link href="/" className="flex items-center gap-3 group">
-                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:shadow-blue-500/40 transition-all">
-                                <Paintbrush className="w-5 h-5 text-white" />
-                            </div>
-                            <span className="text-lg font-bold">
-                                Paint<span className="gradient-text">Bid</span>Pro
-                            </span>
+                        <Link href="/" className="flex items-center group">
+                            <Image
+                                src="/logo_black.png"
+                                alt="PaintBidPro Logo"
+                                width={254}
+                                height={60}
+                                className="h-14 w-auto object-contain transition-all duration-500 group-hover:scale-105"
+                                priority
+                            />
                         </Link>
 
                         {/* Navigation */}

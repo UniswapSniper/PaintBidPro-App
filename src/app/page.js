@@ -39,18 +39,10 @@ function Nav() {
     <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${isScrolled ? "py-4 px-6 md:px-12" : "py-8 px-6 md:px-12"}`}>
       <div className={`mx-auto max-w-7xl transition-all duration-500 ${isScrolled ? "glass rounded-full px-6 py-2 shadow-2xl shadow-black/40" : ""}`}>
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-white to-zinc-400 flex items-center justify-center overflow-hidden shadow-lg group-hover:shadow-white/20 transition-all duration-500">
-                <Paintbrush className="w-5 h-5 text-black" />
-                <div className="absolute inset-0 bg-gradient-to-t from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-              </div>
-            </div>
-            <span className="text-xl md:text-2xl font-black tracking-tighter">
-              Paint<span className="gradient-text-gold">Bid</span>Pro
-              <span className="text-xs text-zinc-500 ml-1 opacity-50 font-medium tracking-normal">.com</span>
-            </span>
-          </Link>
+          <div className="flex items-center group opacity-0 pointer-events-none">
+            {/* Logo removed from here to be placed in Hero */}
+            <div className="h-14 md:h-20 w-[240px]" />
+          </div>
 
           <div className="hidden md:flex items-center gap-10">
             {["Features", "Pricing", "About"].map((item) => (
@@ -163,6 +155,17 @@ export default function Home() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1, ease: "easeOut" }}
               >
+                <Link href="/" className="inline-block mb-12 group">
+                  <Image
+                    src="/logo_black.png"
+                    alt="PaintBidPro Logo"
+                    width={985}
+                    height={233}
+                    className="w-[600px] md:w-[800px] lg:w-[960px] h-auto object-contain transition-all duration-500 group-hover:scale-105"
+                    priority
+                  />
+                </Link>
+
                 <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full glass border-white/10 mb-8">
                   <span className="flex h-2 w-2 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.8)] animate-pulse" />
                   <span className="text-xs font-black uppercase tracking-[0.2em] text-blue-400">v2.0 is Live & Faster</span>
@@ -367,13 +370,14 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
             <div className="lg:col-span-1">
-              <Link href="/" className="inline-block mb-8">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center">
-                    <Paintbrush className="w-4 h-4 text-black" />
-                  </div>
-                  <span className="text-xl font-black tracking-tighter">PaintBidPro</span>
-                </div>
+              <Link href="/" className="inline-block mb-8 group">
+                <Image
+                  src="/logo_black.png"
+                  alt="PaintBidPro Logo"
+                  width={280}
+                  height={70}
+                  className="h-16 md:h-24 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                />
               </Link>
               <p className="text-zinc-500 text-lg leading-relaxed mb-8">
                 Revolutionizing the bidding process for painting professionals worldwide. Built with love in California.

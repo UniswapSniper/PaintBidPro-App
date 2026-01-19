@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { Paintbrush, Twitter, Linkedin, Instagram, Mail, ArrowUpRight } from 'lucide-react';
+import Image from 'next/image';
+import { Twitter, Linkedin, Instagram, Mail, ArrowUpRight } from 'lucide-react';
 
 export default function Footer() {
     return (
@@ -12,13 +13,14 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
                     {/* Brand Column */}
                     <div className="lg:col-span-2">
-                        <Link href="/" className="flex items-center gap-3 mb-6">
-                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
-                                <Paintbrush className="w-5 h-5 text-white" />
-                            </div>
-                            <span className="text-lg font-bold">
-                                Paint<span className="gradient-text">Bid</span>Pro
-                            </span>
+                        <Link href="/" className="flex items-center group mb-6">
+                            <Image
+                                src="/logo_black.png"
+                                alt="PaintBidPro Logo"
+                                width={254}
+                                height={60}
+                                className="h-16 w-auto object-contain transition-all duration-500 group-hover:scale-105"
+                            />
                         </Link>
                         <p className="text-zinc-500 mb-6 max-w-sm leading-relaxed">
                             Revolutionizing the painting industry with AI-powered estimates and LIDAR scanning technology.
