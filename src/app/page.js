@@ -272,7 +272,7 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-24 border-y border-white/5 relative bg-white/[0.01]">
+      <section id="about" className="py-24 border-y border-white/5 relative bg-white/[0.01]">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
             {[
@@ -338,8 +338,65 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Pricing Section */}
+      <section id="pricing" className="py-32 relative overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-4xl mx-auto mb-20">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tightest leading-none">
+                Simple <span className="gradient-text-blue">Pricing</span>
+              </h2>
+              <p className="text-xl md:text-2xl text-zinc-500 font-medium">
+                Start free. Upgrade when you're ready to dominate.
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {[
+              { name: "Starter", price: "Free", desc: "Perfect for trying out PaintBidPro", features: ["5 estimates/month", "Basic LIDAR scanning", "PDF exports", "Email support"] },
+              { name: "Pro", price: "$49", desc: "For growing painting businesses", features: ["Unlimited estimates", "Advanced AI pricing", "Client portal", "Priority support", "Team collaboration"], popular: true },
+              { name: "Enterprise", price: "Custom", desc: "For large painting companies", features: ["Everything in Pro", "Custom integrations", "Dedicated success manager", "SLA guarantee", "White-label options"] }
+            ].map((plan, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                viewport={{ once: true }}
+                className={`glass-card p-8 rounded-[32px] relative ${plan.popular ? 'border-2 border-blue-500/50 shadow-[0_0_40px_rgba(59,130,246,0.2)]' : ''}`}
+              >
+                {plan.popular && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-blue-500 rounded-full text-xs font-black uppercase tracking-wider">
+                    Most Popular
+                  </div>
+                )}
+                <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
+                <div className="text-4xl font-black mb-2">{plan.price}<span className="text-lg text-zinc-500 font-medium">{plan.price !== "Custom" && plan.price !== "Free" ? "/mo" : ""}</span></div>
+                <p className="text-zinc-500 mb-6">{plan.desc}</p>
+                <ul className="space-y-3 mb-8">
+                  {plan.features.map((f, j) => (
+                    <li key={j} className="flex items-center gap-3 text-zinc-400">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <Link href="/get-started" className={`block text-center py-3 px-6 rounded-full font-bold transition-all ${plan.popular ? 'btn-primary' : 'bg-white/10 hover:bg-white/20 border border-white/10'}`}>
+                  {plan.price === "Custom" ? "Contact Sales" : "Get Started"}
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="py-32 relative overflow-hidden">
+      <section id="demo" className="py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-blue-600/10 -z-10" />
         <div className="container mx-auto px-6">
           <div className="glass-card p-16 md:p-32 rounded-[64px] relative overflow-hidden text-center group">
@@ -356,8 +413,8 @@ export default function Home() {
                 <Link href="/get-started" className="btn-primary !py-5 !px-12 !text-xl shadow-[0_20px_60px_rgba(255,255,255,0.15)]">
                   Join the Elite
                 </Link>
-                <Link href="/contact" className="text-xl font-black tracking-tight flex items-center gap-3 hover:translate-x-2 transition-transform">
-                  Talk to Sales <ChevronRight className="w-6 h-6" />
+                <Link href="#pricing" className="text-xl font-black tracking-tight flex items-center gap-3 hover:translate-x-2 transition-transform">
+                  View Pricing <ChevronRight className="w-6 h-6" />
                 </Link>
               </div>
             </div>
@@ -392,15 +449,36 @@ export default function Home() {
             </div>
 
             {[
-              { title: "Product", links: ["Features", "Mobile App", "Pricing", "Enterprise"] },
-              { title: "Company", links: ["About", "Blog", "Careers", "Contact"] },
-              { title: "Legal", links: ["Privacy", "Terms", "Cookie Policy", "Security"] }
+              {
+                title: "Product", links: [
+                  { label: "Features", href: "#features" },
+                  { label: "Mobile App", href: "/get-started" },
+                  { label: "Pricing", href: "#pricing" },
+                  { label: "Enterprise", href: "#pricing" }
+                ]
+              },
+              {
+                title: "Company", links: [
+                  { label: "About", href: "#about" },
+                  { label: "Blog", href: "#" },
+                  { label: "Careers", href: "#" },
+                  { label: "Contact", href: "#demo" }
+                ]
+              },
+              {
+                title: "Legal", links: [
+                  { label: "Privacy", href: "/privacy" },
+                  { label: "Terms", href: "/terms" },
+                  { label: "Cookie Policy", href: "#" },
+                  { label: "Security", href: "#" }
+                ]
+              }
             ].map((cat, i) => (
               <div key={i}>
                 <h4 className="text-sm font-black uppercase tracking-[0.2em] text-white mb-8">{cat.title}</h4>
                 <ul className="space-y-4">
                   {cat.links.map(link => (
-                    <li key={link}><Link href="#" className="text-zinc-500 hover:text-white transition-colors text-lg">{link}</Link></li>
+                    <li key={link.label}><Link href={link.href} className="text-zinc-500 hover:text-white transition-colors text-lg">{link.label}</Link></li>
                   ))}
                 </ul>
               </div>
@@ -410,9 +488,9 @@ export default function Home() {
           <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
             <p className="text-zinc-600">© 2026 PaintBidPro.com — All rights reserved.</p>
             <div className="flex items-center gap-8">
-              <Link href="#" className="text-zinc-500 hover:text-white transition-colors">Twitter</Link>
-              <Link href="#" className="text-zinc-500 hover:text-white transition-colors">LinkedIn</Link>
-              <Link href="#" className="text-zinc-500 hover:text-white transition-colors">Instagram</Link>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-white transition-colors">Twitter</a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-white transition-colors">LinkedIn</a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-white transition-colors">Instagram</a>
             </div>
           </div>
         </div>
